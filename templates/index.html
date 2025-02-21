@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <title>Formulário</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-image">
+            <img src="{{ url_for('static', filename='images/professor.svg') }}" alt="Imagem de professor">
+        </div>
+        <div class="form">
+            <form action="#">
+                <div class="form-header">
+                    <div class="title">
+                        <h1>Acesso</h1>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <div class="input-box uma-coluna">
+                        <label for="usuario">Usuário</label>
+                        <input id="usuario" type="text" name="usuario" placeholder="Digite seu nome de usuário">
+                    </div>
+
+                    <div class="input-box uma-coluna">
+                        <label for="senha">E-mail</label>
+                        <input id="senha" type="password" name="senha" placeholder="Digite sua senha">
+                    </div>
+                </div>
+
+                <div class="continue-button">
+                    <button type="button" onclick="window.location.href='/menu'"><a>Entrar</a></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

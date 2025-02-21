@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Formulário</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-image">
+            <img src="{{ url_for('static', filename='images/professor.svg') }}" alt="Imagem de professor">
+        </div>
+        <div class="form">
+            <form action="#">
+                <div class="form-header">
+                    <div class="title">
+                        <h1>Relação de professores</h1>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>Telefone</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for professor in professores %}
+                            <tr>
+                                <td>{{ professor.id_professor }}</td>
+                                <td>{{ professor.nome }}</td>
+                                <td>{{ professor.email }}</td>
+                                <td>{{ professor.telefone }}</td>
+                                <td>
+                                    <form action="{{ url_for('edicao_professor', id=professor.id_professor) }}" method="POST" style="display: inline;">
+                                        <button type="submit" class="btn-editar" onclick="return confirm('Tem certeza que deseja excluir este professor?');">
+                                            <a><i class="fas fa-pencil-alt"></i></a>
+                                        </button>
+                                    </form>
+                                    <form action="{{ url_for('exclusao_professor', id=professor.id_professor) }}" method="POST" style="display: inline;">
+                                        <button type="submit" class="btn-excluir" onclick="return confirm('Tem certeza que deseja excluir este professor?');">
+                                            <a><i class="fas fa-trash"></i></a>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="continue-button">
+                    <button><a href="#">Continuar</a> </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

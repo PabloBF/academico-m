@@ -1,0 +1,13 @@
+@import url(main.css);
+
+fieldset {
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+  border-style: none;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+button {
+  margin-top: 1rem;
+}
