@@ -37,3 +37,49 @@
     vertical-align: top;
     word-break: normal;
 }
+
+td button {
+    width: 1.5rem; /* Ajusta a largura para que o botão tenha tamanho adequado ao conteúdo */
+    height: 1.5rem;
+    margin: 0 0.2rem; /* Adiciona espaçamento horizontal entre os botões */
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+td, th {
+    font-size: .75rem;
+}
+
+td.com-botoes {
+    display: flex; /* Usamos flexbox para alinhar os botões lado a lado */
+    justify-content: flex-start; /* Alinha os botões à esquerda */
+    gap: 1rem; /* Cria um espaço entre os botões */
+    align-items: center; /* Garante que os botões fiquem centralizados verticalmente */
+}
+
+td button {
+    width: 1.5rem; /* Define a largura do botão */
+    height: 1.5rem; /* Define a altura do botão, igual à largura */
+    margin: 0; /* Remove margens para garantir que os botões fiquem bem próximos */
+    border-radius: 5px; /* Borda arredondada */
+    cursor: pointer;
+    display: flex; /* Usamos flexbox para o alinhamento */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+    padding: 0; /* Remove o padding para que o ícone ocupe todo o espaço */
+}
+
+td button i {
+    font-size: 0.70rem; /* Ajuste o tamanho do ícone conforme necessário */
+}
+
+.btn-editar, .btn-excluir {
+    background-color: #6c63ff; /* Cor do botão */
+    border: none;
+    color: #fff;
+    font-size: .5rem;
+}
+
+.btn-editar:hover, .btn-excluir:hover {
+    background-color: #6b63fff1;
+}

@@ -15,43 +15,53 @@
             <img src="{{ url_for('static', filename='images/professor.svg') }}" alt="Imagem de professor">
         </div>
         <div class="form">
-            <form action="/insercao-professor" id="cadastro" method="POST">
+            <form action="/cadastro-professor" id="cadastro" method="POST">
                 <div class="form-header">
                     <div class="title">
-                        <h1>Cadastrar professor</h1>
+                        <h1>{{ 'Editar Professor' if professor else 'Cadastrar Professor' }}</h1>
                     </div>
                 </div>
 
+                <!-- Campo oculto para ID do professor -->
+                <input type="hidden" name="id_professor" value="{{ professor['id_professor'] if professor else '' }}">
+
                 <div class="input-group">
                     <div class="input-box">
-                        <label for="firstname">Nome</label>
-                        <input id="nome" type="text" name="nome" placeholder="Digite o nome do professor" required>
+                        <label for="nome">Nome</label>
+                        <input id="nome" type="text" name="nome" placeholder="Digite o nome do professor" required
+                               value="{{ professor['nome'] if professor else '' }}">
                     </div>
 
                     <div class="input-box">
                         <label for="email">E-mail</label>
-                        <input id="email" type="email" name="email" placeholder="Digite o e-mail do professor" required>
+                        <input id="email" type="email" name="email" placeholder="Digite o e-mail do professor" required
+                               value="{{ professor['email'] if professor else '' }}">
                     </div>
 
                     <div class="input-box">
-                        <label for="number">Telefone</label>
-                        <input id="telefone" type="tel" name="telefone" placeholder="(xx) xxxx-xxxx" required>
+                        <label for="telefone">Telefone</label>
+                        <input id="telefone" type="tel" name="telefone" placeholder="(xx) xxxx-xxxx" required
+                               value="{{ professor['telefone'] if professor else '' }}">
                     </div>
 
                     <div class="input-box">
                         <label for="habilitacao">Habilitação</label>
-                        <select id="habilitacao" name="habilitacao" placeholder="teste" required>
+                        <select id="habilitacao" name="habilitacao" required>
                             <option value="">Selecione uma habilitação</option>
                             {% for habilitacao in habilitacoes %}
-                            <option value="{{ habilitacao['id_habilitacao'] }}">{{ habilitacao['descricao'] }}</option>
+                            <option value="{{ habilitacao['id_habilitacao'] }}"
+                                {% if professor and professor['id_habilitacao'] == habilitacao['id_habilitacao'] %}selected{% endif %}>
+                                {{ habilitacao['descricao'] }}
+                            </option>
                             {% endfor %}
                         </select>
                     </div>
-
                 </div>
 
                 <div class="continue-button">
-                    <button type="submit" id="btn_cadastrar"><a href="#">Continuar</a> </button>
+                    <button type="submit" id="btn_cadastrar">
+                        {{ 'Salvar' if professor else 'Cadastrar' }}
+                    </button>
                 </div>
             </form>
         </div>

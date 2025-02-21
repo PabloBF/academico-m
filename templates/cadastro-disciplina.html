@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <title>Cadastro/Edição de Disciplinas</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-image">
+            <img src="{{ url_for('static', filename='images/discipline.svg') }}" alt="Imagem de disciplina">
+        </div>
+
+        <div class="form">
+            <form action="/cadastro-disciplina" id="cadastro" method="POST">
+                <div class="form-header">
+                    <div class="title">
+                        <h1>{{ 'Editar Disciplina' if disciplina else 'Cadastrar Disciplina' }}</h1>
+                    </div>
+                </div>
+
+                <!-- Campo oculto para ID da disciplina -->
+                <input type="hidden" name="id_disciplina" value="{{ disciplina['id_disciplina'] if disciplina else '' }}">
+
+                <div class="input-group">
+                    <div class="input-box">
+                        <label for="codigo">Código</label>
+                        <input id="codigo" type="text" name="codigo" placeholder="Digite o código da disciplina" required
+                               value="{{ disciplina['codigo'] if disciplina else '' }}">
+                    </div>
+
+                    <div class="input-box">
+                        <label for="nome">Nome</label>
+                        <input id="nome" type="text" name="nome" placeholder="Digite o nome da disciplina" required
+                               value="{{ disciplina['nome'] if disciplina else '' }}">
+                    </div>
+
+                    <div class="input-box">
+                        <label for="CH">Carga Horária (CH)</label>
+                        <input id="CH" type="text" name="CH" placeholder="Digite a carga horária da disciplina" required
+                               value="{{ disciplina['CH'] if disciplina else '' }}">
+                    </div>
+
+                    <div class="input-box">
+                        <label for="habilitacao_necessaria">Habilitação Necessária</label>
+                        <input id="habilitacao_necessaria" type="number" name="habilitacao_necessaria" placeholder="Informe a habilitação necessária" required
+                               value="{{ disciplina['habilitacao_necessaria'] if disciplina else '' }}">
+                    </div>
+                </div>
+
+                <div class="continue-button">
+                    <button type="submit" id="btn_cadastrar">
+                        {{ 'Salvar' if disciplina else 'Cadastrar' }}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
